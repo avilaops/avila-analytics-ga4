@@ -1,0 +1,45 @@
+# Avila Analytics GA4
+*.env
+!.env.example
+
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Data
+data/
+*.db
+*.sqlite
+
+# Frontend
+frontend/wasm-dashboard/target/
+frontend/wasm-dashboard/pkg/
+frontend/static/pkg/
+node_modules/
+dist/
+
+# Build artifacts
+*.wasm
+*.js.map
+
+# Temporary files
+tmp/
+temp/
+*.tmp

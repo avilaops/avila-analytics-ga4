@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avila Analytics Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        form {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .content {
+            margin: 3rem 0;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🚀 Avila Analytics Demo</h1>
+        <p>This page demonstrates automatic event tracking</p>
+        <a href="#products" class="btn" id="cta-main">View Products</a>
+        <a href="/docs.pdf" class="btn" download>Download PDF</a>
+    </div>
+
+    <div class="products" id="products">
+        <div class="product-card" onclick="viewProduct('rust-book')">
+            <h3>🦀 The Rust Book</h3>
+            <p>Learn Rust programming from scratch</p>
+            <p><strong>$49.99</strong></p>
+            <button class="btn" onclick="addToCart('rust-book', event)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" onclick="viewProduct('wasm-guide')">
+            <h3>🌐 WebAssembly Guide</h3>
+            <p>Master WebAssembly development</p>
+            <p><strong>$39.99</strong></p>
+            <button class="btn" onclick="addToCart('wasm-guide', event)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" onclick="viewProduct('analytics-pro')">
+            <h3>📊 Analytics Pro Course</h3>
+            <p>Advanced analytics techniques</p>
+            <p><strong>$99.99</strong></p>
+            <button class="btn" onclick="addToCart('analytics-pro', event)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>About Avila Analytics</h2>
+        <p>Avila Analytics is a high-performance, privacy-first web analytics platform built 100% in Rust.
+        It provides real-time insights, e-commerce tracking, and advanced analytics features while
+        maintaining complete GDPR compliance.</p>
+
+        <h3>Key Features</h3>
+        <ul>
+            <li>Real-time event tracking</li>
+            <li>Automatic page view tracking</li>
+            <li>Click and scroll tracking</li>
+            <li>Form submission tracking</li>
+            <li>E-commerce tracking</li>
+            <li>File download tracking</li>
+            <li>Privacy-first approach</li>
+        </ul>
+    </div>
+
+    <form id="contact-form" onsubmit="handleSubmit(event)">
+        <h2>Contact Us</h2>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <!-- Avila Analytics Tracker -->
+    <script src="avila-tracker.js" data-site="G-DEMO123456" data-debug="true"></script>
+
+    <script>
+        function viewProduct(productId) {
+            avila.trackEcommerce('view_item', {
+                items: [{
+                    item_id: productId,
+                    item_name: productId.replace('-', ' '),
+                    price: productId === 'rust-book' ? 49.99 : productId === 'wasm-guide' ? 39.99 : 99.99,
+                    quantity: 1,
+                }]
+            });
+        }
+
+        function addToCart(productId, event) {
+            event.stopPropagation();
+            avila.trackEcommerce('add_to_cart', {
+                items: [{
+                    item_id: productId,
+                    item_name: productId.replace('-', ' '),
+                    price: productId === 'rust-book' ? 49.99 : productId === 'wasm-guide' ? 39.99 : 99.99,
+                    quantity: 1,
+                }],
+                value: productId === 'rust-book' ? 49.99 : productId === 'wasm-guide' ? 39.99 : 99.99,
+                currency: 'USD',
+            });
+            alert('Added to cart!');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Form submitted! (Demo only)');
+            return false;
+        }
+
+        // Custom event example
+        setTimeout(() => {
+            avila.track('user_engaged', {
+                time_on_page: 10,
+                interactions: 3,
+            });
+        }, 10000);
+    </script>
+</body>
+</html>

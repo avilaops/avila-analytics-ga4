@@ -1,0 +1,15 @@
+{
+    "name": "avila-analytics-frontend",
+    "version": "0.1.0",
+    "description": "Frontend for Avila Analytics",
+    "scripts": {
+        "build:wasm": "cd frontend/wasm-dashboard && wasm-pack build --target web --out-dir ../../static/pkg",
+        "build:tracker": "terser frontend/tracker/avila-tracker.js --compress --mangle -o frontend/static/avila-tracker.min.js",
+        "build": "npm run build:wasm && npm run build:tracker",
+        "serve": "cd frontend/static && python3 -m http.server 8000",
+        "dev": "npm run build && npm run serve"
+    },
+    "devDependencies": {
+        "terser": "^5.24.0"
+    }
+}
