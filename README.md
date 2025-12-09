@@ -202,10 +202,20 @@ Este projeto integra perfeitamente com:
 
 ## 📚 Documentação
 
-- [Architecture Overview](./docs/architecture.md)
-- [API Reference](./docs/api.md)
-- [Deployment Guide](./docs/deployment.md)
-- [Privacy & Compliance](./docs/privacy.md)
+### Análise e Avaliação
+- **[📊 Executive Summary](./docs/EXECUTIVE_SUMMARY.md)** - Resumo executivo para tomada de decisão
+- **[📈 Integration Analysis](./docs/INTEGRATION_ANALYSIS.md)** - Análise completa de viabilidade e integração
+
+### Guias de Integração
+- **[🌐 Websites HTML/JavaScript](./docs/INTEGRATION_GUIDE_WEBSITES.md)** - Para sites institucionais e landing pages
+- **[🦀 Rust SDK](./docs/INTEGRATION_GUIDE_RUST.md)** - Para aplicações backend e APIs em Rust
+- **[🐍 Python/Django/Flask](./docs/INTEGRATION_GUIDE_PYTHON.md)** - Para aplicações Python
+- **[📘 TypeScript/JavaScript](./docs/INTEGRATION_GUIDE_TYPESCRIPT.md)** - Para React, Next.js, Node.js
+
+### Documentação Técnica
+- [Architecture Overview](./docs/ARCHITECTURE.md)
+- [Quick Start Guide](./QUICKSTART.md)
+- [Deployment Guide](./DEPLOY.md)
 
 ## 🤝 Contribuindo
 
