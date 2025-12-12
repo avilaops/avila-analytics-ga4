@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avila Analytics GA4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark light;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #0f172a, #020617 55%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding: 3rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin: 0;
+            letter-spacing: -0.04em;
+            color: #38bdf8;
+        }
+        header p {
+            max-width: 640px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        .cta-group {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta.primary {
+            background: linear-gradient(135deg, #22d3ee, #6366f1);
+            color: #0f172a;
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.6);
+        }
+        .cta.secondary {
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 45px -20px rgba(14, 165, 233, 0.8);
+        }
+        main {
+            flex: 1;
+            padding: 2rem 1.5rem 4rem;
+            display: grid;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        section {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.65));
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 18px;
+            padding: 2rem;
+            display: grid;
+            gap: 1.25rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 30px 60px -40px rgba(14, 116, 144, 0.85);
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #f8fafc;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.75rem;
+        }
+        ul li {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            line-height: 1.5;
+        }
+        ul li::before {
+            content: "⚡";
+            font-size: 1.1rem;
+            margin-top: 0.15rem;
+        }
+        .cards {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #38bdf8;
+        }
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        a.inline-link {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            section {
+                padding: 1.5rem;
+            }
+            .cta-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Avila Analytics GA4</h1>
+        <p>A plataforma completa de observabilidade digital para equipes de Growth, Data &amp; Engenharia. Pronto para entrar em produção com privacidade garantida e suporte a pipelines GA4.</p>
+        <div class="cta-group">
+            <a class="cta primary" href="https://github.com/avilaops/avila-analytics-ga4/tree/main/docs" target="_blank" rel="noopener">Guia de Integração</a>
+            <a class="cta secondary" href="https://github.com/avilaops/avila-analytics-ga4#readme" target="_blank" rel="noopener">Ver Repositório</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Pronto para produção</h2>
+            <ul>
+                <li>Coleta de eventos compatível com GA4 e enriquecimento em tempo real</li>
+                <li>SDK pronto para navegadores com suporte a consentimento e edge batching</li>
+                <li>Infraestrutura Docker/Kubernetes e pipeline SQLX otimizado para Postgres</li>
+            </ul>
+        </section>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Integração rápida</h3>
+                <p>Exemplos completos em Rust, Typescript, Python e integrações server-side. Acesse o diretório <a class="inline-link" href="https://github.com/avilaops/avila-analytics-ga4/tree/main/examples" target="_blank" rel="noopener">examples/</a>.</p>
+            </div>
+            <div class="card">
+                <h3>Dashboard GA4-ready</h3>
+                <p>Front-end WebAssembly preparado para visualizações em tempo real. Execute <code>./build-frontend.sh</code> para empacotar e publicar.</p>
+            </div>
+            <div class="card">
+                <h3>Enterprise-grade</h3>
+                <p>Configuração avançada com rastreamento seguro, anonimização de IP, políticas LGPD/GDPR e telemetria observável.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Deploy em minutos</h2>
+            <ul>
+                <li>Scripts de implantação para Docker Compose e ambientes GitHub Pages já inclusos</li>
+                <li>Automação de build front-end (<code>build-frontend.{sh,ps1}</code>) gerando assets em <code>frontend/static</code></li>
+                <li>Documentação de integração corporativa disponível no diretório <a class="inline-link" href="https://github.com/avilaops/avila-analytics-ga4/tree/main/docs" target="_blank" rel="noopener">docs/</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Avila Ops. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
