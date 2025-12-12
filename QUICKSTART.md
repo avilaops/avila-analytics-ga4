@@ -1,32 +1,43 @@
-# 🚀 Avila Analytics GA4 - Projeto Completo
+# 🚀 Arxis Quick Start Guide
 
-## ✅ Status: PRONTO PARA USO
+## ✅ Status: MONOREPO ORGANIZADO
 
-### 📦 O que foi criado
+### 📦 Estrutura do Monorepo
 
-#### Backend (100% Rust)
-- ✅ **Core Engine** - Event tracking, processing e storage
-- ✅ **HTTP API** - Axum web server com REST endpoints
-- ✅ **Privacy System** - GDPR/LGPD compliant, IP anonymization
-- ✅ **Storage** - PostgreSQL + Redis integration
-- ✅ **CLI Tools** - Management e reporting tools
-- ✅ **Examples** - Basic, e-commerce e real-time tracking
+Arxis é organizado como um Cargo workspace com múltiplos crates:
 
-#### Frontend
-- ✅ **WebAssembly Dashboard** - Yew framework, componentes interativos
-- ✅ **JavaScript Tracker** - < 5KB, auto-tracking, privacy-first
-- ✅ **Real-time Charts** - Canvas-based visualizations
-- ✅ **HTML/CSS** - Responsive, modern design
-- ✅ **Demo Pages** - Quick start e examples
+#### Analytics & Data Processing
+- ✅ **avx-analytics-ga4** - Web analytics engine GA4-compatible
+- ✅ **avx-dataframe** - High-performance DataFrame implementation
+- ✅ **avx-analytics-engine** - Core analytics processing
+
+#### Scientific Computing
+- ✅ **avx-linalg** - Linear algebra with SIMD acceleration
+- ✅ **avx-ndarray** - N-dimensional arrays for scientific computing
+- ✅ **avx-fft** - Fast Fourier Transform library
+
+#### Storage & Databases
+- ✅ **avx-storage** - High-performance storage engine
+- ✅ **avx-db** - Embedded database with ACID transactions
 
 ### 🎯 Quick Start
 
 ```bash
-# 1. Build do backend
-cd d:\arxis\avila-analytics-ga4
+# 1. Clone o repositório
+git clone https://github.com/avilaops/arxis
+cd arxis
+
+# 2. Build all crates
 cargo build --release
 
-# 2. Rodar servidor
+# 3. Run tests
+cargo test --workspace
+
+# 4. Build specific crate
+cd avx-analytics-ga4
+cargo build --release
+
+# 5. Run analytics server
 cargo run --bin avila-analytics
 
 # 3. Testar tracker (abre demo.html no browser)

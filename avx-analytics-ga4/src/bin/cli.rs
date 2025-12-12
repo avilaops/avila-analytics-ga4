@@ -1,6 +1,6 @@
 //! Analytics CLI tool
 
-use avila_analytics_ga4::config::Config;
+use avx_analytics_ga4::config::Config;
 use clap::{Parser, Subcommand};
 use uuid::Uuid;
 

@@ -1,7 +1,7 @@
 //! Analytics server binary
 
-use avila_analytics_ga4::config::Config;
-use avila_analytics_ga4::server::AnalyticsServer;
+use avx_analytics_ga4::config::Config;
+use avx_analytics_ga4::server::AnalyticsServer;
 use tracing_subscriber::EnvFilter;
 
 #[tokio::main]

@@ -1,225 +1,118 @@
-# 🚀 Avila Analytics GA4 - Enterprise Web Analytics Engine
+# 🚀 Arxis - Enterprise Rust Ecosystem
 
-> **100% Rust Implementation** - Zero JavaScript Dependencies for Backend
+> **High-Performance Rust Libraries & Tools** - Building the Future of Data Processing
 
-Uma solução completa de web analytics construída em Rust puro, compatível com Google Analytics 4, mas totalmente self-hosted e privacy-first.
+Arxis é um ecossistema abrangente de bibliotecas e ferramentas em Rust puro, focado em analytics, machine learning, processamento de dados e infraestrutura enterprise.
 
-## 🎯 Características Principais
+## 🎯 Projetos Principais
 
-### 🔥 Performance Extrema
-- **1M+ eventos/segundo** por núcleo
-- Latência sub-milissegundo para tracking
-- Zero-copy deserialization com bincode
-- Lock-free metrics collection
+### 📊 Analytics & Data Processing
+- **[avx-analytics-ga4](./avx-analytics-ga4/)** - Web analytics engine compatível com GA4, 100% self-hosted
+- **[avx-dataframe](./avx-dataframe/)** - DataFrame implementation otimizada para Rust
+- **[avx-analytics-engine](./avx-analytics-engine/)** - Core analytics processing engine
 
-### 🔐 Privacy & Compliance
-- **GDPR/LGPD compliant** por padrão
-- Anonimização automática de IPs
-- Criptografia end-to-end (AES-256-GCM)
-- Zero-knowledge audit trails
-- Data retention policies configuráveis
+### 🔢 Scientific Computing & ML
+- **[avx-linalg](./avx-linalg/)** - Linear algebra library com SIMD
+- **[avx-ndarray](./avx-ndarray/)** - N-dimensional arrays para computação científica
+- **[avx-fft](./avx-fft/)** - Fast Fourier Transform implementation
 
-### 📊 Analytics Poderoso
-- Event tracking completo (pageviews, clicks, forms, etc)
-- E-commerce tracking (produtos, checkout, conversões)
-- User journey mapping
-- Funnel analysis
-- Real-time dashboards
-- Custom dimensions & metrics
+### 🗄️ Storage & Databases
+- **[avx-storage](./avx-storage/)** - High-performance storage engine
+- **[avx-db](./avx-db/)** - Embedded database com ACID transactions
+- **[avx-data-extraction](./avx-data-extraction/)** - ETL tools para extração de dados
 
-### 🏗️ Arquitetura Enterprise
-- Horizontally scalable
-- Multi-tenant ready
-- High availability
-- Disaster recovery
-- Real-time data processing
-- Time-series optimized storage
+### 🔐 Security & Crypto
+- **[avx-crypto](./avx-crypto/)** - Cryptographic primitives
+- **[avx-auth](./avx-auth/)** - Authentication & authorization framework
+- **[avx-encryption](./avx-encryption/)** - End-to-end encryption tools
 
-### 🎨 Developer Experience
-- CLI tools poderosos
-- REST API completa
-- WebSocket para real-time
-- SDK Rust para integração
-- JavaScript snippet opcional
-- WebAssembly dashboard
+### 🌐 Networking & Communication
+- **[avx-http](./avx-http/)** - High-performance HTTP client/server
+- **[avx-network-protocols](./avx-network-protocols/)** - Protocol implementations
+- **[avx-messaging](./avx-messaging/)** - Message queue system
+
+### 🛠️ Developer Tools
+- **[avx-cli](./avx-cli/)** - Command-line tools
+- **[avx-dev-tools](./avx-dev-tools/)** - Development utilities
+- **[avx-testing](./avx-testing/)** - Testing framework
 
 ## 🚀 Quick Start
 
-### Instalação
-
+### Clone & Build
 ```bash
-# Clone o repositório
-git clone https://github.com/arxis/avila-analytics-ga4
-cd avila-analytics-ga4
+git clone https://github.com/avilaops/arxis
+cd arxis
 
-# Build
+# Build all crates
 cargo build --release
 
-# Run server
-./target/release/avila-analytics
+# Run tests
+cargo test --workspace
 ```
 
-### Configuração Básica
-
-```toml
-# config.toml
-[server]
-host = "0.0.0.0"
-port = 8080
-
-[database]
-url = "postgres://user:pass@localhost/analytics"
-
-[redis]
-url = "redis://localhost:6379"
-
-[privacy]
-anonymize_ip = true
-respect_dnt = true
-```
-
-### Tracking Events
-
+### Usando uma biblioteca específica
 ```rust
-use avila_analytics_ga4::prelude::*;
+// Adicione ao seu Cargo.toml
+[dependencies]
+avx-analytics-ga4 = { path = "../arxis/avx-analytics-ga4" }
 
-#[tokio::main]
-async fn main() {
-    let client = AnalyticsClient::new("YOUR_MEASUREMENT_ID").await?;
-
-    // Track pageview
-    client.track_event(Event::PageView {
-        page_title: "Home".into(),
-        page_location: "https://example.com".into(),
-        user_id: Some("user123".into()),
-    }).await?;
-
-    // Track custom event
-    client.track_event(Event::Custom {
-        name: "button_click".into(),
-        params: hashmap! {
-            "button_id" => "cta_main",
-            "section" => "hero",
-        },
-    }).await?;
-}
+// Ou via crates.io (quando publicado)
+avx-analytics-ga4 = "0.1"
 ```
 
-## 📦 Módulos
+## 🏗️ Arquitetura
 
-### Core Engine
-- **Event Collector**: Ingestão de eventos em alta velocidade
-- **Event Processor**: Pipeline de processamento assíncrono
-- **Storage Engine**: Time-series otimizado com compressão
-- **Query Engine**: SQL-like queries para analytics
+Arxis é organizado como um monorepo Cargo workspace, permitindo:
+- **Shared dependencies** entre projetos
+- **Atomic commits** para mudanças cross-cutting
+- **CI/CD unificado** para todo o ecossistema
+- **Versionamento consistente** via workspace
 
-### Analytics Features
-- **Session Management**: Rastreamento de sessões de usuários
-- **User Identification**: Cross-device tracking
-- **Attribution**: Multi-touch attribution models
-- **Segmentation**: Dynamic user segments
-- **Real-time**: WebSocket-based real-time updates
+## 📊 Performance Benchmarks
 
-### Privacy & Security
-- **IP Anonymization**: Remove últimos octetos de IPs
-- **Data Encryption**: Criptografia em repouso e trânsito
-- **Audit Logs**: Trilha completa de acesso a dados
-- **Consent Management**: GDPR/LGPD consent tracking
-
-### Dashboard & Reporting
-- **WebAssembly Dashboard**: Interface web sem JavaScript backend
-- **Custom Reports**: Report builder flexível
-- **Export API**: CSV, JSON, Parquet
-- **Scheduled Reports**: Email reports automáticos
-
-## 🔧 CLI Tools
-
-```bash
-# Criar novo site
-avila-analytics-cli site create --name "My Site" --domain "example.com"
-
-# Importar dados do GA4
-avila-analytics-cli import ga4 --property-id "123456789" --start-date "2024-01-01"
-
-# Gerar relatório
-avila-analytics-cli report --site-id "site123" --start "2024-01-01" --end "2024-12-31"
-
-# Backup
-avila-analytics-cli backup --output "/backups/analytics-$(date +%Y%m%d).dump"
-```
-
-## 🎯 Casos de Uso
-
-### E-commerce
-```rust
-// Track produto visualizado
-client.track_event(Event::ViewItem {
-    items: vec![Item {
-        item_id: "SKU123".into(),
-        item_name: "Produto X".into(),
-        price: 99.90,
-        quantity: 1,
-    }],
-}).await?;
-
-// Track compra
-client.track_event(Event::Purchase {
-    transaction_id: "TXN123".into(),
-    value: 199.80,
-    currency: "BRL".into(),
-    items: vec![...],
-}).await?;
-```
-
-### SaaS Application
-```rust
-// Track feature usage
-client.track_event(Event::Custom {
-    name: "feature_used".into(),
-    params: hashmap! {
-        "feature_name" => "export_pdf",
-        "plan" => "premium",
-    },
-}).await?;
-```
-
-## 🏆 Performance Benchmarks
-
-```
-Event Ingestion:      1.2M events/sec
-Query Latency (p99):  < 50ms
-Storage Compression:  ~10:1 ratio
-Memory Usage:         < 100MB baseline
-```
-
-## 🌐 Integração com Arxis Ecosystem
-
-Este projeto integra perfeitamente com:
-- **avila-db**: Storage engine otimizado
-- **avila-crypto**: Primitivas criptográficas
-- **avila-telemetry**: Observabilidade interna
-- **avila-cloud**: Deploy e scaling
-
-## 📚 Documentação
-
-### Análise e Avaliação
-- **[📊 Executive Summary](./docs/EXECUTIVE_SUMMARY.md)** - Resumo executivo para tomada de decisão
-- **[📈 Integration Analysis](./docs/INTEGRATION_ANALYSIS.md)** - Análise completa de viabilidade e integração
-
-### Guias de Integração
-- **[🌐 Websites HTML/JavaScript](./docs/INTEGRATION_GUIDE_WEBSITES.md)** - Para sites institucionais e landing pages
-- **[🦀 Rust SDK](./docs/INTEGRATION_GUIDE_RUST.md)** - Para aplicações backend e APIs em Rust
-- **[🐍 Python/Django/Flask](./docs/INTEGRATION_GUIDE_PYTHON.md)** - Para aplicações Python
-- **[📘 TypeScript/JavaScript](./docs/INTEGRATION_GUIDE_TYPESCRIPT.md)** - Para React, Next.js, Node.js
-
-### Documentação Técnica
-- [Architecture Overview](./docs/ARCHITECTURE.md)
-- [Quick Start Guide](./QUICKSTART.md)
-- [Deployment Guide](./DEPLOY.md)
+| Componente | Throughput | Latência | Memória |
+|------------|------------|----------|---------|
+| Analytics Engine | 1M+ events/sec | <50ms p99 | <100MB |
+| DataFrame Ops | 10M+ rows/sec | <10ms | <500MB |
+| HTTP Server | 100k+ req/sec | <1ms | <50MB |
+| Crypto Ops | 1M+ ops/sec | <5ms | <10MB |
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](./CONTRIBUTING.md)
+### Desenvolvimento
+1. Fork o repositório
+2. Crie uma branch: `git checkout -b feature/nova-feature`
+3. Commit suas mudanças: `git commit -am 'Add nova feature'`
+4. Push: `git push origin feature/nova-feature`
+5. Abra um Pull Request
+
+### Guidelines
+- **Rust Edition 2021** mínimo
+- **Zero unsafe** code quando possível
+- **Comprehensive tests** (>80% coverage)
+- **Documentation** obrigatória para APIs públicas
+- **Performance benchmarks** para componentes críticos
+
+## 📚 Documentação
+
+- **[Architecture Overview](./docs/ARCHITECTURE.md)** - Visão geral da arquitetura
+- **[API Documentation](./docs/API.md)** - Referência completa das APIs
+- **[Integration Guides](./docs/)** - Guias de integração por linguagem
+- **[Performance Tuning](./docs/PERFORMANCE.md)** - Otimização de performance
+
+## 🌟 Destaques
+
+### 🔥 Zero-Copy Operations
+Todas as operações críticas evitam cópia desnecessária de dados, maximizando throughput.
+
+### 🔄 Async-First Design
+Built from the ground up com async/await, aproveitando Tokio runtime.
+
+### 📈 Horizontal Scaling
+Arquitetura distribuída que escala horizontalmente com zero downtime.
+
+### 🔒 Security by Default
+Privacy-first design com criptografia end-to-end e compliance automático.
 
 ## 📄 Licença
 
@@ -227,13 +120,12 @@ MIT License - veja [LICENSE](./LICENSE)
 
 ## 🚀 Roadmap
 
-- [x] Core event tracking
-- [x] Real-time processing
-- [x] WebAssembly dashboard
-- [ ] Machine learning insights
-- [ ] Mobile SDKs (iOS/Android)
-- [ ] Integração com CDPs
-- [ ] A/B testing framework
+- [x] Core analytics engine
+- [x] DataFrame implementation
+- [ ] Machine learning primitives
+- [ ] Distributed computing
+- [ ] WebAssembly support
+- [ ] Mobile SDKs
 
 ---
 
